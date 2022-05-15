@@ -1,7 +1,7 @@
-from classes.Matrix import Matrix
+from ce2.classes.Matrix import Matrix
 
 
-class I(Matrix):
+class Im(Matrix):
 
     def __init__(self, size):
         super().__init__(size)
