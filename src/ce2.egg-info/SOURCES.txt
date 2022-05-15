@@ -2,7 +2,9 @@ LICENSE
 pyproject.toml
 setup.cfg
 setup.py
+src/ce2/__init__.py
 src/ce2/app.py
+src/ce2/trab1ricardosiqueira.py
 src/ce2.egg-info/PKG-INFO
 src/ce2.egg-info/SOURCES.txt
 src/ce2.egg-info/dependency_links.txt
