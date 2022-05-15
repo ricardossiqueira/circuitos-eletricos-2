@@ -1,4 +1,4 @@
-from classes.Component import Component
+from .Component import Component
 
 
 class Resistor(Component):
@@ -13,10 +13,10 @@ class Resistor(Component):
     def get(self):
         return self.label, self.node_0, self.node_1, self.R
 
-    def stamp_function(self, G):
-        G = G.get()
-        G[self.node_0, self.node_0] += 1 / self.R
-        G[self.node_0, self.node_1] -= 1 / self.R
-        G[self.node_1, self.node_0] -= 1 / self.R
-        G[self.node_1, self.node_1] += 1 / self.R
-        return G
+    def stamp_function(self, Gm):
+        Gm = Gm.get()
+        Gm[self.node_0, self.node_0] += 1 / self.R
+        Gm[self.node_0, self.node_1] -= 1 / self.R
+        Gm[self.node_1, self.node_0] -= 1 / self.R
+        Gm[self.node_1, self.node_1] += 1 / self.R
+        return Gm

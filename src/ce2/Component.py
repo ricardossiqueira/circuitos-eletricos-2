@@ -13,5 +13,5 @@ class Component:
         # injector node
         self.node_1 = int(node_1)
 
-    def stamp_function(self, G):
-        return G
+    def stamp_function(self, Gm):
+        return Gm

@@ -1,4 +1,4 @@
-from classes.Component import Component
+from .Component import Component
 
 
 class Current(Component):
@@ -14,8 +14,8 @@ class Current(Component):
     def get(self):
         return self.label, self.node_0, self.node_1, self.mode, self.i
 
-    def stamp_function(self, I):
-        I = I.get()
-        I[self.node_0] -= self.i
-        I[self.node_1] += self.i
-        return I
+    def stamp_function(self, Im):
+        Im = Im.get()
+        Im[self.node_0] -= self.i
+        Im[self.node_1] += self.i
+        return Im

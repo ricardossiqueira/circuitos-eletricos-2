@@ -1,10 +1,10 @@
-from classes.Matrix import Matrix
+from .Matrix import Matrix
 
 
-class I(Matrix):
+class Gm(Matrix):
 
     def __init__(self, size):
         super().__init__(size)
 
     def drop_ground(self):
-        return self.matrix[1:]
+        return self.matrix[1:, 1:]
