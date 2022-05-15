@@ -1,4 +1,4 @@
-from ce2.app import main as app_main
+from .app import main as app_main
 
 
 def main(file_name):

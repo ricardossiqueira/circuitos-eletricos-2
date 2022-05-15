@@ -1,4 +1,4 @@
-from ce2.classes.Component import Component
+from .Component import Component
 
 
 class Current(Component):

@@ -1,11 +1,11 @@
 from operator import attrgetter
 import numpy as np
 
-from ce2.classes.Gm import Gm
-from ce2.classes.Im import Im
-from ce2.classes.Resistor import Resistor
-from ce2.classes.Current import Current
-from ce2.functions.file_handler import file_handler
+from .Gm import Gm
+from .Im import Im
+from .Resistor import Resistor
+from .Current import Current
+from .functions import file_handler
 
 
 # parse each component to it's own class
