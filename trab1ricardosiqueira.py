@@ -1,4 +1,4 @@
-from .main import main as app_main
+from app.main import main as app_main
 
 
 def main(file_name):
