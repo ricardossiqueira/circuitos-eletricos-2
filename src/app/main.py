@@ -1,19 +1,10 @@
 from operator import attrgetter
 import numpy as np
 
-from .Gm import Gm
-from .Im import Im
-from .Resistor import Resistor
-from .Current import Current
-from .functions import file_handler
-
-
-# parse each component to it's own class
-def new_component(arr):
-    if 'R' in arr[0]:
-        return Resistor(arr)
-    elif 'I' in arr[0]:
-        return Current(arr)
+from components.Gm import Gm
+from components.Im import Im
+from functions.file_handler import file_handler
+from functions.new_component import new_component
 
 
 def main(file_name):
