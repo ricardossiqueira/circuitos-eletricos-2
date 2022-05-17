@@ -1,3 +1,4 @@
+# import file
 def file_handler(file_name):
     file = open(file_name)
     file_contents = file.read()
