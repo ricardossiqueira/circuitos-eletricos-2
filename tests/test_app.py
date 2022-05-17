@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 from app.main import main
-from app.trab1ricardosiqueira import main as trab1_main
+from trab1ricardosiqueira import main as trab1_main
 
 
 @pytest.mark.parametrize("test_input, expected, test_result", [
