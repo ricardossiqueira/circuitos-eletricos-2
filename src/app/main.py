@@ -8,7 +8,6 @@ from functions.new_component import new_component
 
 
 def main(file_name):
-
     # read file
     _, contents_split = file_handler(file_name)
 
@@ -36,10 +35,10 @@ def main(file_name):
 
     # add component to matrix using component's own stamp method
     for component in circuit_matrix:
-        if component._type == 'resistor':
-            G_matrix.add_component(component.stamp_function)
-        elif component._type == 'current':
+        if component._type == 'current':
             I_matrix.add_component(component.stamp_function)
+        else:
+            G_matrix.add_component(component.stamp_function)
 
     # voltage vector
     e = np.linalg.solve(G_matrix.drop_ground(), I_matrix.drop_ground())

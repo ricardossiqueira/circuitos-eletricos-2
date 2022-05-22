@@ -1,4 +1,4 @@
-from components.Current import Current
+from components.CurrentSource import CurrentSource, CurrentSourceControlledByVoltage
 from components.Resistor import Resistor
 
 
@@ -7,4 +7,6 @@ def new_component(arr):
     if 'R' in arr[0]:
         return Resistor(arr)
     elif 'I' in arr[0]:
-        return Current(arr)
+        return CurrentSource(arr)
+    elif 'G' in arr[0]:
+        return CurrentSourceControlledByVoltage(arr)

@@ -2,6 +2,11 @@ from .Component import Component
 
 
 class Resistor(Component):
+    '''
+        node_0 = drain
+        node_1 = inject
+        R = resistance value
+    '''
 
     def __init__(self, arr):
         self.R = int(arr[3])

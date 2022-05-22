@@ -1,4 +1,3 @@
-from app.main import main as app_main
 import subprocess
 import sys
 
@@ -9,6 +8,12 @@ def build_module():
                           stdout=subprocess.DEVNULL)
 
 
-def main(file_name):
+try:
+    from app.main import main as app_main
+except:
     build_module()
+    from app.main import main as app_main
+
+
+def main(file_name):
     return app_main(file_name)
