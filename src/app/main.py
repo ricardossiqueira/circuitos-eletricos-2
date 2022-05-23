@@ -11,7 +11,7 @@ def main(file_name):
     # read file
     try:
         _, contents_split = file_handler('tests/assets/' + file_name)
-    except:
+    except FileNotFoundError:
         _, contents_split = file_handler(file_name)
 
     # remove comments
