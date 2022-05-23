@@ -1,22 +1,18 @@
 from operator import attrgetter
 import numpy as np
-import sys
 
-if 'unittest' in sys.modules.keys():
-    from components.Gm import Gm
-    from components.Im import Im
-    from functions.file_handler import file_handler
-    from functions.new_component import new_component
-else:
-    from src.components.Gm import Gm
-    from src.components.Im import Im
-    from src.functions.file_handler import file_handler
-    from src.functions.new_component import new_component
+from src.components.Gm import Gm
+from src.components.Im import Im
+from src.functions.file_handler import file_handler
+from src.functions.new_component import new_component
 
 
 def main(file_name):
     # read file
-    _, contents_split = file_handler(file_name)
+    try:
+        _, contents_split = file_handler('tests/assets/' + file_name)
+    except:
+        _, contents_split = file_handler(file_name)
 
     # remove comments
     no_comments = [line for line in contents_split if '*' not in line]

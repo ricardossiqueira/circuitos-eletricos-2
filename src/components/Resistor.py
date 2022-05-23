@@ -1,9 +1,4 @@
-import sys
-
-if 'unittest' in sys.modules.keys():
-    from .Component import Component
-else:
-    from src.components.Component import Component
+from src.components.Component import Component
 
 
 class Resistor(Component):
