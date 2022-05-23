@@ -1,5 +1,11 @@
-from components.CurrentSource import CurrentSource, CurrentSourceControlledByVoltage
-from components.Resistor import Resistor
+import sys
+
+if 'unittest' in sys.modules.keys():
+    from components.CurrentSource import CurrentSource, CurrentSourceControlledByVoltage
+    from components.Resistor import Resistor
+else:
+    from src.components.CurrentSource import CurrentSource, CurrentSourceControlledByVoltage
+    from src.components.Resistor import Resistor
 
 
 # parse each component to it's own class

@@ -1,4 +1,9 @@
-from .Matrix import Matrix
+import sys
+
+if 'unittest' in sys.modules.keys():
+    from .Matrix import Matrix
+else:
+    from src.components.Matrix import Matrix
 
 
 class Gm(Matrix):
