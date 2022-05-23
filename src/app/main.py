@@ -9,7 +9,10 @@ from src.functions.new_component import new_component
 
 def main(file_name):
     # read file
-    _, contents_split = file_handler(file_name)
+    try:
+        _, contents_split = file_handler('tests/assets/' + file_name)
+    except:
+        _, contents_split = file_handler(file_name)
 
     # remove comments
     no_comments = [line for line in contents_split if '*' not in line]
