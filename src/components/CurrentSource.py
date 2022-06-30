@@ -1,3 +1,4 @@
+from cmath import rect, pi
 from src.components.Component import Component
 
 
@@ -58,6 +59,43 @@ class CurrentSourceControlledByVoltage(Component):
         return Gm
 
 
-#TODO: IMPLEMENT SINUSOIDAL CURRENT SOURCE CLASS
+# TODO: CHECK SINUSOIDAL CURRENT SOURCE CLASS
 class SinusoidalCurrentSource(Component):
-    pass
+    '''
+        node_0 = drain             \\
+        node_1 = inject            \\
+        mode = font operating mode \\
+        DC = DC value              \\
+        A = amplitude value        \\
+        f = frequency value        \\
+        phi = phase value
+    '''
+
+    def __init__(self, arr):
+        self.mode = arr[3]
+        self.DC = int(arr[4])
+        self.A = int(arr[5])
+        self.f = int(arr[6])
+        self.phi = int(arr[7])
+        super().__init__(_type='sinusoidal_current',
+                         label=arr[0],
+                         node_0=arr[1],
+                         node_1=arr[2])
+
+        self.phasor = self.i = rect(self.A, self.phi)
+        self.omega = 2 * pi * self.f
+
+    def get(self):
+        return self.label, self.node_0, self.node_1, self.mode, self.DC, self.A, self.f, self.phi
+
+    def get_phasor(self):
+        return self.phasor
+
+    def get_omega(self):
+        return self.omega
+
+    def stamp_function(self, Im):
+        Im = Im.get()
+        Im[self.node_0] -= self.i
+        Im[self.node_1] += self.i
+        return Im
