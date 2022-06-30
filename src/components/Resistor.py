@@ -3,8 +3,8 @@ from src.components.Component import Component
 
 class Resistor(Component):
     '''
-        node_0 = drain
-        node_1 = inject
+        node_0 = drain       \\
+        node_1 = inject      \\
         R = resistance value
     '''
 

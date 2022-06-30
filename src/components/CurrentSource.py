@@ -3,9 +3,9 @@ from src.components.Component import Component
 
 class CurrentSource(Component):
     '''
-        node_0 = drain
-        node_1 = inject
-        mode = font operating mode
+        node_0 = drain             \\
+        node_1 = inject            \\
+        mode = font operating mode \\
         i = current value
     '''
 
@@ -29,10 +29,10 @@ class CurrentSource(Component):
 
 class CurrentSourceControlledByVoltage(Component):
     '''
-        node_0 = drain
-        node_1 = inject
-        control_0 = positive control
-        control_1 = negative control
+        node_0 = drain                \\
+        node_1 = inject               \\
+        control_0 = positive control  \\
+        control_1 = negative control  \\
         value = transcondutancy value
     '''
 
@@ -56,3 +56,8 @@ class CurrentSourceControlledByVoltage(Component):
         Gm[self.node_1, self.control_1] += self.value
 
         return Gm
+
+
+#TODO: IMPLEMENT SINUSOIDAL CURRENT SOURCE CLASS
+class SinusoidalCurrentSource(Component):
+    pass
