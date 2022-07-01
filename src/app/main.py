@@ -1,7 +1,7 @@
 from operator import attrgetter
 import numpy as np
-from components.CurrentSource import SinusoidalCurrentSource
 
+from src.components.CurrentSource import SinusoidalCurrentSource
 from src.components.Gm import Gm
 from src.components.Im import Im
 from src.functions.file_handler import file_handler
