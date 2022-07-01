@@ -2,7 +2,7 @@ from cmath import rect, pi
 from src.components.Component import Component
 
 
-class CurrentSource(Component):
+class DCCurrentSource(Component):
     '''
         node_0 = drain             \\
         node_1 = inject            \\
@@ -75,14 +75,15 @@ class SinusoidalCurrentSource(Component):
         self.mode = arr[3]
         self.DC = int(arr[4])
         self.A = int(arr[5])
-        self.f = int(arr[6])
+        self.f = float(arr[6])
         self.phi = int(arr[7])
-        super().__init__(_type='sinusoidal_current',
+        super().__init__(_type='current',
                          label=arr[0],
                          node_0=arr[1],
                          node_1=arr[2])
 
-        self.phasor = self.i = rect(self.A, self.phi)
+        # phase in radians
+        self.phasor = self.i = rect(self.A, self.phi * pi / 180)
         self.omega = 2 * pi * self.f
 
     def get(self):

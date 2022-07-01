@@ -15,7 +15,7 @@ class SinusoidalInductor(Component):
     def __init__(self, arr):
         self.L = int(arr[3])
         self.cond = int(arr[4])
-        self.omega = int(arr[5])
+        self.omega = arr[5]
         super().__init__(_type='sinusoidal_inductor',
                          label=arr[0],
                          node_0=arr[1],

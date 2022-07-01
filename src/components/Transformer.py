@@ -15,16 +15,16 @@ class SinusoidalTransformer(Component):
     '''
 
     def __init__(self, arr):
-        self.node_2 = int(arr[3])
-        self.node_3 = int(arr[4])
-        self.L_1 = int(arr[5])
-        self.L_2 = int(arr[6])
-        self.M = int(arr[7])
-        self.omega = int(arr[8])
+        self.L_1 = float(arr[5])
+        self.L_2 = float(arr[6])
+        self.M = float(arr[7])
+        self.omega = arr[8]
         super().__init__(_type='sinusoidal_transformer',
                          label=arr[0],
                          node_0=arr[1],
-                         node_1=arr[2])
+                         node_1=arr[2],
+                         node_2=arr[3],
+                         node_3=arr[4])
 
         self.gamma_11 = self.L_2 / (self.L_1 * self.L_2 - self.M**2)
         self.gamma_22 = self.L_1 / (self.L_1 * self.L_2 - self.M**2)

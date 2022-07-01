@@ -1,5 +1,6 @@
 from operator import attrgetter
 import numpy as np
+from components.CurrentSource import SinusoidalCurrentSource
 
 from src.components.Gm import Gm
 from src.components.Im import Im
@@ -21,13 +22,24 @@ def main(file_name):
     # split component in a list of lists
     circuit_matrix = [line.split(' ') for line in no_comments]
 
-    # returns list of component classes
-    circuit_matrix = [new_component(component) for component in circuit_matrix]
+    # fetch omega from sinusoidal current source, if any
+    omega = 0
+    for attrs in circuit_matrix:
+        if 'I' in attrs[0] and 'SIN' in attrs[3]:
+            omega = SinusoidalCurrentSource(attrs).get_omega()
+            break
+
+    # returns list of component classes passing the corresponding omega values
+    circuit_matrix = [
+        new_component(component, omega) for component in circuit_matrix
+    ]
 
     # return highest node in the netlist
     max_node_0 = max(circuit_matrix, key=attrgetter('node_0')).node_0
     max_node_1 = max(circuit_matrix, key=attrgetter('node_1')).node_1
-    matrix_size = max(max_node_0, max_node_1) + 1
+    max_node_2 = max(circuit_matrix, key=attrgetter('node_2')).node_2
+    max_node_3 = max(circuit_matrix, key=attrgetter('node_3')).node_3
+    matrix_size = max(max_node_0, max_node_1, max_node_2, max_node_3) + 1
 
     # init matrices
     G_matrix = Gm([matrix_size, matrix_size])

@@ -3,7 +3,9 @@ import pytest
 from app.main import main
 from trab1ricardosiqueira import main as trab1_main
 
-netlists_test = [
+netlists_test = []
+
+trabalho_1 = [
     ('tests/assets/netlist0.txt',
      np.ndarray(shape=(2, 1), buffer=np.array([[10.], [8.]]),
                 dtype=float), None),
@@ -25,17 +27,41 @@ netlists_test = [
                 dtype=float), None),
 ]
 
+trabalho_2 = [
+    ('tests/assets/netlist4.txt',
+     np.ndarray(shape=(3, 1),
+                buffer=np.array([[3.295 + 0.202j], [3.257 + 0.51j],
+                                 [3.282 + 0.41j]]),
+                dtype=np.complex128), None),
+    ('tests/assets/netlist5.txt',
+     np.ndarray(shape=(3, 1),
+                buffer=np.array([[1.473 + 2.955j], [1.187 + 3.075j],
+                                 [1.286 + 3.047j]]),
+                dtype=np.complex128), None),
+    ('tests/assets/netlist6.txt',
+     np.ndarray(shape=(2, 1),
+                buffer=np.array([[99.476 + 6.62j], [0.578 - 4.943j]]),
+                dtype=np.complex128), None),
+    ('tests/assets/netlist7.txt',
+     np.ndarray(shape=(2, 1),
+                buffer=np.array([[-1.111 + 0.932j], [0.0188 - 0.016j]]),
+                dtype=np.complex128), None),
+]
+
+netlists_test.extend(trabalho_1)
+netlists_test.extend(trabalho_2)
+
 
 @pytest.mark.parametrize("test_input, expected, test_result", netlists_test)
 def test_trab1ricardosiqueira_is_healthy(test_input, expected, test_result):
-    assert np.testing.assert_array_almost_equal(trab1_main(test_input),
-                                                expected) is test_result
+    assert np.testing.assert_array_almost_equal(
+        trab1_main(test_input), expected, decimal=3) is test_result
 
 
 @pytest.mark.parametrize("test_input, expected, test_result", netlists_test)
 def test_netlist_returns_right_result(test_input, expected, test_result):
-    assert np.testing.assert_array_almost_equal(main(test_input),
-                                                expected) is test_result
+    assert np.testing.assert_array_almost_equal(
+        main(test_input), expected, decimal=3) is test_result
 
 
 @pytest.mark.parametrize("test_input, expected", [

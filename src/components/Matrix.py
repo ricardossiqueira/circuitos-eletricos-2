@@ -4,7 +4,7 @@ import numpy as np
 class Matrix:
 
     def __init__(self, size):
-        self.matrix = np.zeros(size)
+        self.matrix = np.zeros(size, dtype=np.complex128)
 
     def get(self):
         return self.matrix

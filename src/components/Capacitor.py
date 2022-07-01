@@ -15,7 +15,7 @@ class SinusoidalCapacitor(Component):
     def __init__(self, arr):
         self.C = int(arr[3])
         self.cond = int(arr[4])
-        self.omega = int(arr[5])
+        self.omega = arr[5]
         super().__init__(_type='sinusoidal_capacitor',
                          label=arr[0],
                          node_0=arr[1],
