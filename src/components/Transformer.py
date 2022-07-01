@@ -1,7 +1,6 @@
-from components.Component import Component
+from src.components.Component import Component
 
 
-# TODO: IMPLEMENT TRANSFORMER CLASS
 class SinusoidalTransformer(Component):
     '''
         node_0 = a                         \\

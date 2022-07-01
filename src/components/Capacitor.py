@@ -1,8 +1,6 @@
-from components.Component import Component
+from src.components.Component import Component
 
 
-# TODO: CHECK CAPACITOR CLASS
-# TODO: IMPLEMENT CAPACITOR INICIAL CONDITIONS
 class SinusoidalCapacitor(Component):
     '''
         node_0 = drain              \\

@@ -1,4 +1,4 @@
-from components.Transformer import SinusoidalTransformer
+from src.components.Transformer import SinusoidalTransformer
 from src.components.CurrentSource import DCCurrentSource, CurrentSourceControlledByVoltage, SinusoidalCurrentSource
 from src.components.Resistor import Resistor
 from src.components.Inductor import SinusoidalInductor

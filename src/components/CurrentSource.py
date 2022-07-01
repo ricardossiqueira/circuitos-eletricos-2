@@ -59,7 +59,6 @@ class CurrentSourceControlledByVoltage(Component):
         return Gm
 
 
-# TODO: CHECK SINUSOIDAL CURRENT SOURCE CLASS
 class SinusoidalCurrentSource(Component):
     '''
         node_0 = drain             \\

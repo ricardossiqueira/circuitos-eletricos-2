@@ -1,8 +1,6 @@
-from components.Component import Component
+from src.components.Component import Component
 
 
-# TODO: CHECK INDUCTOR CLASS
-# TODO: IMPLEMENT INDUCTOR INITIAL CONDITIONS
 class SinusoidalInductor(Component):
     '''
         node_0 = drain            \\
