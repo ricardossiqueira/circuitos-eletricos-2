@@ -1,3 +1,5 @@
+* TRABALHO 1
+
 * Exemplo basico de netlist.
 * Netlist de um circuito com dois resistores
 * e uma fonte de corrente constante.
