@@ -1,8 +1,8 @@
-from src.components.Transformer import SinusoidalTransformer
-from src.components.CurrentSource import DCCurrentSource, CurrentSourceControlledByVoltage, SinusoidalCurrentSource
-from src.components.Resistor import Resistor
-from src.components.Inductor import SinusoidalInductor
-from src.components.Capacitor import SinusoidalCapacitor
+from src.components.rss_Transformer import SinusoidalTransformer
+from src.components.rss_CurrentSource import DCCurrentSource, CurrentSourceControlledByVoltage, SinusoidalCurrentSource
+from src.components.rss_Resistor import Resistor
+from src.components.rss_Inductor import SinusoidalInductor
+from src.components.rss_Capacitor import SinusoidalCapacitor
 
 
 # parse each component to it's own class

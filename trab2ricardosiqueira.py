@@ -1,4 +1,4 @@
-from src.app.main import main as app_main
+from src.app.rss_main import main as app_main
 
 
 def main(file_name):

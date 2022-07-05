@@ -1,4 +1,4 @@
-from src.components.Matrix import Matrix
+from src.components.rss_Matrix import Matrix
 
 
 class Gm(Matrix):

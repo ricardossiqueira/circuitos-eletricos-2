@@ -1,5 +1,5 @@
 from cmath import rect, pi
-from src.components.Component import Component
+from src.components.rss_Component import Component
 
 
 class DCCurrentSource(Component):

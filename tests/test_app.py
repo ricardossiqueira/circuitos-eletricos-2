@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
-from app.main import main
-from trab1ricardosiqueira import main as trab1_main
+from src.app.rss_main import main
+from trab2ricardosiqueira import main as trab2_main
 
 netlists_test = []
 
@@ -55,7 +55,7 @@ netlists_test.extend(trabalho_2)
 @pytest.mark.parametrize("test_input, expected, test_result", netlists_test)
 def test_trab1ricardosiqueira_is_healthy(test_input, expected, test_result):
     assert np.testing.assert_array_almost_equal(
-        trab1_main(test_input), expected, decimal=3) is test_result
+        trab2_main(test_input), expected, decimal=3) is test_result
 
 
 @pytest.mark.parametrize("test_input, expected, test_result", netlists_test)

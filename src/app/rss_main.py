@@ -1,11 +1,11 @@
 from operator import attrgetter
 import numpy as np
 
-from src.components.CurrentSource import SinusoidalCurrentSource
-from src.components.Gm import Gm
-from src.components.Im import Im
-from src.functions.file_handler import file_handler
-from src.functions.new_component import new_component
+from src.components.rss_CurrentSource import SinusoidalCurrentSource
+from src.components.rss_Gm import Gm
+from src.components.rss_Im import Im
+from src.functions.rss_file_handler import file_handler
+from src.functions.rss_new_component import new_component
 
 
 def main(file_name):
