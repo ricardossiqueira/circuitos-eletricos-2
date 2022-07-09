@@ -1,4 +1,4 @@
-from components.rss_Component import Component
+from src.components.rss_Component import Component
 
 
 class Resistor(Component):
@@ -9,7 +9,7 @@ class Resistor(Component):
     '''
 
     def __init__(self, arr):
-        self.R = int(arr[3])
+        self.R = float(arr[3])
         super().__init__(_type='resistor',
                          label=arr[0],
                          node_0=arr[1],
@@ -18,7 +18,7 @@ class Resistor(Component):
     def get(self):
         return self.label, self.node_0, self.node_1, self.R
 
-    def stamp_function(self, Gm):
+    def Gstamp_function(self, Gm):
         Gm = Gm.get()
         Gm[self.node_0, self.node_0] += 1 / self.R
         Gm[self.node_0, self.node_1] -= 1 / self.R

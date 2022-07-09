@@ -1,8 +1,8 @@
 from operator import attrgetter
 import numpy as np
 
-from components.rss_Gm import Gm
-from components.rss_Im import Im
+from src.components.rss_Gm import Gm
+from src.components.rss_Im import Im
 from functions.rss_file_handler import file_handler
 from functions.rss_new_component import new_component
 
@@ -35,10 +35,8 @@ def main(file_name):
 
     # add component to matrix using component's own stamp method
     for component in circuit_matrix:
-        if component._type == 'current':
-            I_matrix.add_component(component.stamp_function)
-        else:
-            G_matrix.add_component(component.stamp_function)
+        I_matrix.add_component(component.Istamp_function)
+        G_matrix.add_component(component.Gstamp_function)
 
     # voltage vector
     e = np.linalg.solve(G_matrix.drop_ground(), I_matrix.drop_ground())
