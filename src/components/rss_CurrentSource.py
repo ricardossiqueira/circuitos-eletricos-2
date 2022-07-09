@@ -1,4 +1,4 @@
-from src.components.Component import Component
+from components.rss_Component import Component
 
 
 class CurrentSource(Component):

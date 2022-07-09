@@ -1,5 +1,5 @@
-from src.components.CurrentSource import CurrentSource, CurrentSourceControlledByVoltage
-from src.components.Resistor import Resistor
+from components.rss_CurrentSource import CurrentSource, CurrentSourceControlledByVoltage
+from components.rss_Resistor import Resistor
 
 
 # parse each component to it's own class
