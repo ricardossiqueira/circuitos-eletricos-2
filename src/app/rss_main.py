@@ -3,8 +3,8 @@ import numpy as np
 
 from src.components.rss_Gm import Gm
 from src.components.rss_Im import Im
-from functions.rss_file_handler import file_handler
-from functions.rss_new_component import new_component
+from src.functions.rss_file_handler import file_handler
+from src.functions.rss_new_component import new_component
 
 
 def main(file_name):
