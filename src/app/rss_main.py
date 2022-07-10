@@ -27,7 +27,9 @@ def main(file_name):
     # return highest node in the netlist
     max_node_0 = max(circuit_matrix, key=attrgetter('node_0')).node_0
     max_node_1 = max(circuit_matrix, key=attrgetter('node_1')).node_1
-    matrix_size = max(max_node_0, max_node_1) + 1
+    max_node_2 = max(circuit_matrix, key=attrgetter('node_2')).node_2
+    max_node_3 = max(circuit_matrix, key=attrgetter('node_3')).node_3
+    matrix_size = max(max_node_0, max_node_1, max_node_2, max_node_3) + 1
 
     # init matrices
     G_matrix = Gm([matrix_size, matrix_size])
