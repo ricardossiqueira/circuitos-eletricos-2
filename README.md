@@ -2,7 +2,7 @@
 
 ### Branches
 
-![Branches](assets/branches.png "Branches")
+![Branches](assets/branches-colored.png "Branches")
 
 - [Trabalho 1 - Análise Nodal Simples](https://github.com/ricardossiqueira/circuitos-eletricos-2/tree/trabalho-1)
 
