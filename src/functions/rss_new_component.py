@@ -1,8 +1,8 @@
-from src.components.rss_CurrentSource import CurrentSource, CurrentSourceControlledByCurrent
-from src.components.rss_CurrentSource import CurrentSourceControlledByVoltage
-from src.components.rss_VoltageSource import VoltageSource, VoltageSourceControlledByVoltage
-from src.components.rss_VoltageSource import VoltageSourceControlledByCurrent
-from src.components.rss_Resistor import Resistor
+from components.rss_CurrentSource import CurrentSource, CurrentSourceControlledByCurrent
+from components.rss_CurrentSource import CurrentSourceControlledByVoltage
+from components.rss_VoltageSource import VoltageSource, VoltageSourceControlledByVoltage
+from components.rss_VoltageSource import VoltageSourceControlledByCurrent
+from components.rss_Resistor import Resistor
 
 
 # parse each component to it's own class

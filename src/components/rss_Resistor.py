@@ -1,4 +1,4 @@
-from src.components.rss_Component import Component
+from components.rss_Component import Component
 
 
 class Resistor(Component):

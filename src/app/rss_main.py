@@ -1,15 +1,17 @@
 from operator import attrgetter
 import numpy as np
 
-from src.components.rss_Gm import Gm
-from src.components.rss_Im import Im
-from src.functions.rss_file_handler import file_handler
-from src.functions.rss_new_component import new_component
+from components.rss_Gm import Gm
+from components.rss_Im import Im
+from functions.rss_file_handler import file_handler
+from functions.rss_new_component import new_component
 
 
-def main(file_name):
+def main(netlist_file, sim_uptime, nr_step, nr_lim, initial_values,
+         target_nodes):
+
     # read file
-    _, contents_split = file_handler(file_name)
+    _, contents_split = file_handler(netlist_file)
 
     # remove comments
     no_comments = [line for line in contents_split if '*' not in line]
