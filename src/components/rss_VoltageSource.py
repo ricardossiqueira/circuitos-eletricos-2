@@ -42,6 +42,73 @@ class VoltageSource(Component):
         return expanded_Gm
 
 
+class SinVoltageSource(Component):
+    '''
+        node_0 = drain
+        node_1 = inject
+        mode = font operating mode
+        v = voltage value
+    '''
+
+    def __init__(self, arr):
+        self.mode = arr[3]
+        self.v = int(arr[4])
+        super().__init__(_type='voltage',
+                         label=arr[0],
+                         node_0=arr[1],
+                         node_1=arr[2])
+
+        self.amplitude = float(arr[5])
+        self.frequency = float(arr[6])
+        self.phase = float(arr[7])
+        self.sim_uptime = float(arr[8])
+        self.sim_delay = float(arr[9])
+        self.n_points = int(self.sim_uptime / self.sim_delay) + 1
+
+        self.dc_value = self.v
+
+        # if self.mode == 'PULSE':
+        #     self.v1 = arr[5]
+        #     self.v2 = arr[6]
+        #     self.delay = arr[7]
+        #     self.trise = arr[8]
+        #     self.tfall = arr[9]
+        #     self.tv2 = arr[10]
+        #     self.tperiod = arr[11]
+
+    def Istamp_function(self, Im):
+        aux = []
+        for i in range(int(self.sim_uptime / self.sim_delay) + 1):
+            self.time = i * self.sim_delay
+
+            self.ix = Im.get().shape[0]
+
+            expanded_Im = np.zeros((self.ix + 1, 1))
+            expanded_Im[:-1, :] = Im.get()
+
+            expanded_Im[self.ix] -= self.amplitude * np.cos(
+                2 * np.pi * self.frequency * self.time +
+                self.phase * np.pi / 180)
+
+            aux.append(expanded_Im)
+
+        return aux
+
+    def Gstamp_function(self, Gm):
+        self.ix = Gm.get().shape[0]
+        expanded_Gm = np.zeros((self.ix + 1, self.ix + 1))
+        expanded_Gm[:-1, :-1] = Gm.get()
+
+        expanded_Gm[self.ix, self.node_0] -= 1
+        expanded_Gm[self.ix, self.node_1] += 1
+
+        expanded_Gm[self.node_0, self.ix] += 1
+        expanded_Gm[self.node_1, self.ix] -= 1
+
+        self.latest_Gm = expanded_Gm
+        return expanded_Gm
+
+
 class VoltageSourceControlledByCurrent(Component):
     '''
         node_0 = drain

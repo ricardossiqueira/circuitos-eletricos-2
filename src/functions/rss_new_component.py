@@ -1,6 +1,6 @@
 from components.rss_CurrentSource import CurrentSource, CurrentSourceControlledByCurrent
 from components.rss_CurrentSource import CurrentSourceControlledByVoltage
-from components.rss_VoltageSource import VoltageSource, VoltageSourceControlledByVoltage
+from components.rss_VoltageSource import SinVoltageSource, VoltageSource, VoltageSourceControlledByVoltage
 from components.rss_VoltageSource import VoltageSourceControlledByCurrent
 from components.rss_Resistor import Resistor
 
@@ -20,4 +20,7 @@ def new_component(arr):
     elif 'H' in arr[0]:
         return VoltageSourceControlledByCurrent(arr)
     elif 'V' in arr[0]:
-        return VoltageSource(arr)
+        if 'SIN' in arr[3]:
+            return SinVoltageSource(arr)
+        else:
+            return VoltageSource(arr)
