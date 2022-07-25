@@ -1,16 +1,15 @@
-def newton_raphson(f, df, x0, lim):
+def newton_raphson(f, df, x, epsilon, lim):
     '''
     f = function
     df = differential function
-    x0 = initial guess
+    x = initial guess
+    epsilon = error tolerance
     lim = iteration limit
     '''
 
-    i = 0
+    for _ in range(lim):
+        x = x - f(x) / df(x)
+        if abs(f(x)) < epsilon:
+            return x
 
-    while i <= lim:
-        x1 = x0 - f(x0) / df(x0)
-        x0 = x1
-        i += 1
-
-    return x1
+    return x

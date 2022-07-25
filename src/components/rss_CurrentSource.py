@@ -4,10 +4,31 @@ import numpy as np
 
 class CurrentSource(Component):
     '''
-        node_0 = drain
-        node_1 = inject
-        mode = font operating mode
-        i = current value
+        DC mode params:\\
+            node_0 = drain\\
+            node_1 = inject\\
+            mode = font operating mode\\
+            i = current value\n
+        SIN mode params:\\
+            node_0 = drain\\
+            node_1 = inject\\
+            mode = font operating mode\\
+            i = current value\\
+            amplitude = amplitude of the sin wave\\
+            frequency = frequency of the sin wave (in Hz)\\
+            phase = phase of the sin wave (in degrees)\n
+        PULSE mode params:\\
+            node_0 = drain\\
+            node_1 = inject\\
+            mode = font operating mode\\
+            i = current value\\
+            v1 = first voltage level\\
+            v2 = second voltage level\\
+            delay = time on the voltage level v1\\
+            trise = rise time in seconds\\
+            tfall = fall time in seconds\\
+            tv2 = time on the voltage level v2\\
+            tperiod = period of the pulse in seconds
     '''
 
     def __init__(self, arr):
@@ -18,6 +39,20 @@ class CurrentSource(Component):
                          node_0=arr[1],
                          node_1=arr[2])
 
+        if self.mode == 'SIN':
+            self.amplitude = arr[5]
+            self.fequency = arr[6]
+            self.phase = arr[7]
+
+        if self.mode == 'PULSE':
+            self.v1 = arr[5]
+            self.v2 = arr[6]
+            self.delay = arr[7]
+            self.trise = arr[8]
+            self.tfall = arr[9]
+            self.tv2 = arr[10]
+            self.tperiod = arr[11]
+
     def Istamp_function(self, Im):
         Im = Im.get()
         Im[self.node_0] -= self.i
@@ -27,10 +62,10 @@ class CurrentSource(Component):
 
 class CurrentSourceControlledByVoltage(Component):
     '''
-        node_0 = drain
-        node_1 = inject
-        control_0 = positive control
-        control_1 = negative control
+        node_0 = drain\\
+        node_1 = inject\\
+        control_0 = positive control\\
+        control_1 = negative control\\
         value = transcondutancy value
     '''
 
@@ -57,10 +92,10 @@ class CurrentSourceControlledByVoltage(Component):
 
 class CurrentSourceControlledByCurrent(Component):
     '''
-        node_0 = drain
-        node_1 = inject
-        control_0 = positive control
-        control_1 = negative control
+        node_0 = drain\\
+        node_1 = inject\\
+        control_0 = positive control\\
+        control_1 = negative control\\
         gain = current gain
     '''
 

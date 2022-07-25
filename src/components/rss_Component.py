@@ -5,11 +5,11 @@ Generic component class
 
 class Component:
     '''
-        node_0 = drain
-        node_1 = inject
-        node_2 = control_0
-        node_3 = control_1
-        _type = component type
+        node_0 = drain\\
+        node_1 = inject\\
+        node_2 = control_0\\
+        node_3 = control_1\\
+        _type = component type\\
         label = component label
     '''
 

@@ -5,9 +5,12 @@ from components.rss_Gm import Gm
 from components.rss_Im import Im
 from functions.rss_file_handler import file_handler
 from functions.rss_new_component import new_component
+import components.rss_settings as rss_settings
+
+rss_settings.init()
 
 
-def main(netlist_file, sim_uptime, nr_step, nr_lim, initial_values,
+def main(netlist_file, sim_time, sim_delay, nr_lim, initial_values,
          target_nodes):
 
     # read file
@@ -21,10 +24,17 @@ def main(netlist_file, sim_uptime, nr_step, nr_lim, initial_values,
         no_comments.remove('')
 
     # split component in a list of lists
-    circuit_matrix = [line.split(' ') for line in no_comments]
+    component_list = [line.split(' ') for line in no_comments]
 
     # returns list of component classes
-    circuit_matrix = [new_component(component) for component in circuit_matrix]
+    circuit_matrix = []
+    for component in component_list:
+        component.append(sim_time)
+        component.append(sim_delay)
+        component.append(nr_lim)
+        component.append(initial_values)
+
+        circuit_matrix.append(new_component(component))
 
     # return highest node in the netlist
     max_node_0 = max(circuit_matrix, key=attrgetter('node_0')).node_0
@@ -42,7 +52,26 @@ def main(netlist_file, sim_uptime, nr_step, nr_lim, initial_values,
         I_matrix.add_component(component.Istamp_function)
         G_matrix.add_component(component.Gstamp_function)
 
-    # voltage vector
-    e = np.linalg.solve(G_matrix.drop_ground(), I_matrix.drop_ground())
+    e = [
+        np.linalg.solve(G_matrix.drop_ground(),
+                        I_matrix.get()[i][1:])
+        for i in range(int(sim_time / sim_delay) + 1)
+    ]
 
-    return e
+    res = []
+    for j in target_nodes:
+        aux = []
+        for i in range(len(e)):
+            aux.append(e[i][j - 1][0])
+        res.append(aux)
+
+    # for i in range(len(e)):
+    #     aux = []
+    #     for j in range(len(target_nodes)):
+    #         aux.append(e[i][j][0])
+    #     res.append(aux)
+
+    # # voltage vector
+    # e = np.linalg.solve(G_matrix.drop_ground(), I_matrix.drop_ground())
+
+    return res
