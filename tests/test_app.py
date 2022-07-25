@@ -133,8 +133,8 @@ trabalho_4 = [
     #      dtype=float), None),
 ]
 
-netlists_test.extend(trabalho_1)
-netlists_test.extend(trabalho_3)
+# netlists_test.extend(trabalho_1)
+# netlists_test.extend(trabalho_3)
 netlists_test.extend(trabalho_4)
 
 
